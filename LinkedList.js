@@ -1,68 +1,68 @@
-const Node = require("./Node");
+const Node = require("./nodeElement");
 
 function LinkedList() {
   this.array = [];
-  this.head = null;
-  this.tail = null;
-  return array;
+  this.headNode = null;
+  this.tailNode = null;
 }
 
-linkedList.prototype.append = function (value) {
+LinkedList.prototype.append = function (value) {
   // add new node to tail and push with value in!
-  const node = new this.array.push(value);
-  this.tail = value;
+  const node = new Node(value);
+  this.array.push(node);
+  this.tailNode = node;
   return;
 };
 
-linkedList.prototype.prepend = function (value) {
+LinkedList.prototype.prepend = function (value) {
   //add new head
   const node = new Node();
   node.value = value;
-  node.nextNode = this.head;
+  node.nextNode = this.headNode;
   this.array = [node].concat(this.array);
 
   //update head
-  this.head = node;
+  this.headNode = node;
   return;
 };
 
-linkedList.prototype.size = function () {
+LinkedList.prototype.size = function () {
   return this.array.length;
 };
 
-linkedList.prototype.head = function () {
-  return this.head;
+LinkedList.prototype.head = function () {
+  return this.headNode;
 };
 
-linkedList.prototype.tail = function () {
-  return this.tail;
+LinkedList.prototype.tail = function () {
+  return this.tailNode;
 };
 
-linkedList.prototype.at = function (index) {
+LinkedList.prototype.at = function (index) {
   return this.array[index].value;
 };
 
-linkedList.prototype.pop = function () {
+LinkedList.prototype.pop = function () {
   // what about tail if element is 2 or less?
   if (!this.array) {
     return;
   }
   const temp = this.array.shift();
-  this.head = temp.next;
+  this.headNode = temp.next;
   if (this.array.length == 1) {
-    this.tail = this.head;
+    this.tailNode = this.headNode;
   }
   return temp.value;
 };
 
-linkedList.prototype.contains = function (value) {
+LinkedList.prototype.contains = function (value) {
   for (const node of this.array) {
     if (value == node.value) return true;
   }
   return false;
 };
 
-linkedList.prototype.findIndex = function (value) {
+LinkedList.prototype.findIndex = function (value) {
   for (let i = 0; i < this.array.length; i++) {
     const node = this.array[i];
     if (value == node.value) return i;
@@ -70,14 +70,16 @@ linkedList.prototype.findIndex = function (value) {
   return -1;
 };
 
-linkedList.prototype.toString() = function (){
-  const stringOfLinkedList = ""
-  if (!this.array) return stringOfLinkedList;
+LinkedList.prototype.toString = function () {
+  var stringOfLinkedList = "";
+  if (!this.array) return "";
   for (const node of this.array) {
-    stringOfLinkedList = stringOfLinkedList.concat("( " + node.value + " )" + " => ")
+    stringOfLinkedList = stringOfLinkedList.concat(
+      "( " + node.value + " )" + " => ",
+    );
   }
   stringOfLinkedList = stringOfLinkedList.concat("null");
   return stringOfLinkedList;
-}
+};
 
 module.exports = LinkedList;
