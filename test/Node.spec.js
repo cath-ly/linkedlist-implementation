@@ -15,6 +15,7 @@ describe("Node class", () => {
   const newNode = new Node(0);
   test("Node next node is initally modified", () => {
     child.nextNode = newNode;
+    expect(newNode.value).toEqual(0);
     expect(child.nextNode.value).toEqual(newNode.value);
   });
 });
