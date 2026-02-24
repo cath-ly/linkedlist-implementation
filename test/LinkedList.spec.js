@@ -1,4 +1,5 @@
 const LinkedList = require("../LinkedList");
+const Node = require("../nodeElement");
 
 describe("Linked List class", () => {
   const list = new LinkedList();
@@ -13,5 +14,18 @@ describe("Linked List class", () => {
     expect(list.toString()).toEqual("null");
   });
 
-  test("Linked List methods are functional", () => {});
+  test("Linked List append and prepend methods are functional", () => {
+    const head = 1;
+    const tail = 0;
+
+    list.prepend(head);
+    expect(list.head().value).toBe(head);
+    expect(list.tail().value).toBe(head);
+    expect(list.array.length).toEqual(1);
+
+    list.append(tail);
+    expect(list.head().value).toBe(head);
+    expect(list.tail().value).toBe(tail);
+    expect(list.array.length).toEqual(2);
+  });
 });

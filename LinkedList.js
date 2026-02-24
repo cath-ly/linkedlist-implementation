@@ -10,20 +10,22 @@ LinkedList.prototype.append = function (value) {
   // add new node to tail and push with value in!
   const node = new Node(value);
   this.array.push(node);
+
+  //update head & tail (if needed)
   this.tailNode = node;
+  if (this.array.length === 1) this.tailNode = node;
   return;
 };
 
 LinkedList.prototype.prepend = function (value) {
   //add new head
-  const node = new Node();
-  node.value = value;
+  const node = new Node(value);
   node.nextNode = this.headNode;
   this.array = [node].concat(this.array);
 
-  //update head
+  //update head & tail (if needed)
+  if (this.array.length === 1) this.tailNode = node;
   this.headNode = node;
-  return;
 };
 
 LinkedList.prototype.size = function () {
