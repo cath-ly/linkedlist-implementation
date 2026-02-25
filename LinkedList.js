@@ -11,9 +11,14 @@ LinkedList.prototype.append = function (value) {
   const node = new Node(value);
   this.array.push(node);
 
-  //update head & tail (if needed)
+  //update head & tail (if needed) note: tailNode since appended has a null node for nextNode
+  temp = this.tailNode;
   this.tailNode = node;
   if (this.array.length === 1) this.tailNode = node;
+  else {
+    temp.nextNode = node;
+    node.nextNode = null;
+  }
   return;
 };
 
@@ -41,14 +46,13 @@ LinkedList.prototype.tail = function () {
 };
 
 LinkedList.prototype.at = function (index) {
+  if (index >= this.array.length || index < 0) return;
   return this.array[index].value;
 };
 
 LinkedList.prototype.pop = function () {
   // what about tail if element is 2 or less?
-  if (!this.array) {
-    return;
-  }
+  if (this.array.length === 0) return;
   const temp = this.array.shift();
   this.headNode = temp.next;
   if (this.array.length == 1) {
@@ -80,6 +84,7 @@ LinkedList.prototype.toString = function () {
       "( " + node.value + " )" + " => ",
     );
   }
+  // easy alternative but what about using the nodes nextValue
   stringOfLinkedList = stringOfLinkedList.concat("null");
   return stringOfLinkedList;
 };

@@ -27,4 +27,17 @@ describe("Linked List class", () => {
     expect(list.tail().value).toBe(tail);
     expect(list.size()).toEqual(2);
   });
+
+  test("Linked List at, contains, and findIndex methods are functional", () => {
+    expect(list.at(1)).toBe(list.tail().value);
+    expect(list.at(2)).toBe(undefined);
+
+    expect(list.contains(0)).toBe(true);
+    expect(list.contains(3)).toBe(false);
+
+    expect(list.findIndex(0)).toEqual(1);
+    expect(list.findIndex(2)).toEqual(-1);
+  });
+
+  test("Linked List pop method is functional", () => {});
 });
