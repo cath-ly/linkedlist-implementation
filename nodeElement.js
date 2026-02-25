@@ -4,6 +4,7 @@ function Node(value, nextNode) {
     this.nextNode = null;
   } else if (value && !nextNode) {
     this.value = value;
+    this.nextNode = null;
   } else {
     this.value = value;
     this.nextNode = nextNode;
