@@ -39,5 +39,18 @@ describe("Linked List class", () => {
     expect(list.findIndex(2)).toEqual(-1);
   });
 
-  test("Linked List pop method is functional", () => {});
+  test("Linked List pop method is functional", () => {
+    console.log(list.head(), list.tail());
+    const node = list.pop();
+    expect(node.value).toBe(1);
+
+    console.log(list.head(), list.tail());
+    expect(list.size()).toBe(1);
+    expect(list.head().value).toBe(0);
+    expect(list.tail().value).toBe(0);
+
+    list.pop();
+    const noNode = list.pop();
+    expect(noNode).toBe(undefined);
+  });
 });

@@ -2,6 +2,7 @@ const Node = require("./nodeElement");
 
 function LinkedList() {
   this.array = [];
+  //technically for linked list first point is always dummynode(start null then point to head in case we want to replace multiple values around head i believe)
   this.headNode = null;
   this.tailNode = null;
 }
@@ -54,11 +55,11 @@ LinkedList.prototype.pop = function () {
   // what about tail if element is 2 or less?
   if (this.array.length === 0) return;
   const temp = this.array.shift();
-  this.headNode = temp.next;
+  this.headNode = temp.nextNode;
   if (this.array.length == 1) {
     this.tailNode = this.headNode;
   }
-  return temp.value;
+  return temp;
 };
 
 LinkedList.prototype.contains = function (value) {
