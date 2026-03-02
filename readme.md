@@ -10,4 +10,4 @@ Project given by TheOdinProject:
   - pop() should remove the head node from the list and return its value. If it’s used on an empty list, it should just return undefined. (Completed 2/26/26)
   - contains(value) returns true if the passed in value is in the list and otherwise returns false. (Completed 2/25/26)
   - findIndex(value) returns the index of the node containing the given value. If the value can’t be found in the list, it should return -1. If more than one node has a value matching the given value, it should return the index of the first node with the matching value. (Completed 2/25/26)
-  - toString() represents your LinkedList objects as strings, so you can print them out and preview them in the console. If the list is empty, it should return an empty string. The format should be: ( value ) -> ( value ) -> ( value ) -> null. (Patching)
+  - toString() represents your LinkedList objects as strings, so you can print them out and preview them in the console. If the list is empty, it should return an empty string. The format should be: ( value ) -> ( value ) -> ( value ) -> null. (Completed 3/2/26)

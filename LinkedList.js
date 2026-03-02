@@ -2,7 +2,7 @@ const Node = require("./nodeElement");
 
 function LinkedList() {
   this.array = [];
-  //technically for linked list first point is always dummynode(start null then point to head in case we want to replace multiple values around head i believe)
+  //technically for linked list first point is always dummynode(start null then point to head in case we want to replace multiple values around head)
   this.headNode = null;
   this.tailNode = null;
 }
@@ -85,7 +85,7 @@ LinkedList.prototype.toString = function () {
       "( " + node.value + " )" + " => ",
     );
   }
-  // easy alternative but what about using the nodes nextValue
+  // always null at the end since it is an end pointer
   stringOfLinkedList = stringOfLinkedList.concat("null");
   return stringOfLinkedList;
 };

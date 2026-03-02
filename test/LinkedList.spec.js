@@ -39,16 +39,28 @@ describe("Linked List class", () => {
     expect(list.findIndex(2)).toEqual(-1);
   });
 
+  test("Linked List toString method is functional", () => {
+    const newHead = 66;
+    list.prepend(66);
+    expect(list.head().value).toBe(newHead);
+    expect(list.head().nextNode.value).toBe(1);
+    expect(list.tail().value).toBe(0);
+    expect(list.size()).toEqual(3);
+
+    const expectedList = "( 66 ) => ( 1 ) => ( 0 ) => null";
+    expect(list.toString()).toMatch(expectedList);
+  });
+
   test("Linked List pop method is functional", () => {
-    console.log(list.head(), list.tail());
     const node = list.pop();
-    expect(node.value).toBe(1);
+    expect(node.value).toBe(66);
 
     console.log(list.head(), list.tail());
-    expect(list.size()).toBe(1);
-    expect(list.head().value).toBe(0);
+    expect(list.size()).toBe(2);
+    expect(list.head().value).toBe(1);
     expect(list.tail().value).toBe(0);
 
+    list.pop();
     list.pop();
     const noNode = list.pop();
     expect(noNode).toBe(undefined);
