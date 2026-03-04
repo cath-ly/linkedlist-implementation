@@ -2,7 +2,7 @@ const Node = require("./nodeElement");
 
 function LinkedList() {
   this.array = [];
-  //technically for linked list first point is always dummynode(start null then point to head in case we want to replace multiple values around head)
+  //technically for linked list first point is always dummynode(start null then point to head in case we want to replace/remove value(s) around head)
   this.headNode = null;
   this.tailNode = null;
 }
