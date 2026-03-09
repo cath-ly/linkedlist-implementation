@@ -77,11 +77,10 @@ LinkedList.prototype.findIndex = function (value) {
   return -1;
 };
 
-LinkedList.prototype.replace = function (value, newValue) {
-  //replaces first instance of node value with new value
+LinkedList.prototype.replace = function (index, value) {
+  //replaces index with new value
   for (let i = 0; i < this.array.length; i++) {
-    const node = this.array[i];
-    if (value === node.value) node.value = newValue;
+    if (index === i) node.value = value;
   }
 };
 
