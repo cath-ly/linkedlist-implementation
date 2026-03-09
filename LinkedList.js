@@ -56,7 +56,7 @@ LinkedList.prototype.pop = function () {
   if (this.array.length === 0) return;
   const temp = this.array.shift();
   this.headNode = temp.nextNode;
-  if (this.array.length == 1) {
+  if (this.array.length === 1) {
     this.tailNode = this.headNode;
   }
   return temp;
@@ -72,9 +72,17 @@ LinkedList.prototype.contains = function (value) {
 LinkedList.prototype.findIndex = function (value) {
   for (let i = 0; i < this.array.length; i++) {
     const node = this.array[i];
-    if (value == node.value) return i;
+    if (value === node.value) return i;
   }
   return -1;
+};
+
+LinkedList.prototype.replace = function (value, newValue) {
+  //replaces first instance of node value with new value
+  for (let i = 0; i < this.array.length; i++) {
+    const node = this.array[i];
+    if (value === node.value) node.value = newValue;
+  }
 };
 
 LinkedList.prototype.toString = function () {
