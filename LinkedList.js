@@ -15,8 +15,13 @@ LinkedList.prototype.append = function (value) {
   //update head & tail (if needed) note: tailNode since appended has a null node for nextNode
   temp = this.tailNode;
   this.tailNode = node;
-  if (this.array.length === 1) this.tailNode = node;
-  else {
+
+  if (this.array.length === 0) {
+    this.headNode = node;
+    this.tailNode = node;
+  } else if (this.array.length === 1) {
+    this.tailNode = node;
+  } else {
     temp.nextNode = node;
     node.nextNode = null;
   }
@@ -81,6 +86,31 @@ LinkedList.prototype.replace = function (index, value) {
   //replaces index with new value
   for (let i = 0; i < this.array.length; i++) {
     if (index === i) node.value = value;
+  }
+};
+
+LinkedList.prototype.remove = function (index) {
+  if (index < 0 || index >= this.array.length) return;
+  //if size is 2 and removing tail
+  if (this.array.length === 2 && index === 1) {
+    this.tailNode = this.headNode;
+    this.array.splice(index, 1);
+    return;
+  }
+  let count = index;
+  let curr = this.headNode;
+  let temp = new Node();
+  let prev = new Node();
+  for (const node of this.array) {
+    if (count === 0) {
+      prev.nextNode = curr.nextNode;
+      this.array.splice(index, 1);
+      return;
+    }
+    temp = curr;
+    curr = node;
+    prev = temp;
+    count = count - 1;
   }
 };
 
